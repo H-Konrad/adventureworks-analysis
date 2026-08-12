@@ -1,0 +1,19 @@
+##### WORK LOG #####
+
+The aim of this project is to identify a notable period in the company's sales data and investigate what caused the observed change.
+
+#### DATASET ####
+
+Initially loaded the AdventureWorks dataset into SQL Server Management Studio to unpack it. Then, downloaded any relevant tables as .csv files to transfer them to GCP Cloud Storage. Next, created a dataset in BigQuery to begin SQL analysis. (Connected the GitHub repo to GCP.)
+
+#### WHAT TO INVESTIGATE? ####
+
+The first query I want to write is intended to get an overview of how revenue, orders, customers, and units changed from month to month. This will help in checking for any notable changes that occurred throughout the company's history, which can provide a starting point for the intended research.
+
+The results for the first query show several periods that could be analysed. The first, second, and last rows are immediately discarded, since they contain initial or incomplete company data. Although there are several periods with large fluctuations in monthly revenue, in most cases, the customers, orders, and units fluctuate synchronously with revenue, suggesting that it can be explained entirely through sales volume.
+
+Other periods are more interesting because the change in revenue cannot be explained simply by changes in orders, customers, and units. In particular, between Jan and Feb 2013, revenue decreases by 10%, while the customers, orders, and units all increase by over 100%. This makes the period between January and February 2013 particularly interesting for further investigation.
+
+#### INVESTIGATION ####
+
+Why did revenue decrease between Jan and Feb 2013 despite the massive increase in orders, customers, and units?
