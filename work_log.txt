@@ -17,3 +17,50 @@ Other periods are more interesting because the change in revenue cannot be expla
 #### INVESTIGATION ####
 
 Why did revenue decrease between Jan and Feb 2013 despite the massive increase in orders, customers, and units?
+
+To answer this question, I want to look at the following ideas:
+  - Main metrics: 
+    - total revenue/orders/customers/units 
+    - revenue per order/unit  
+    - units per order 
+  
+  - Products: 
+    - revenue/orders/units by product category/subcategory 
+    - average revenue per unit by product category/subcategory 
+  
+  - Pricing: 
+    - average unit price  
+    - average unit price by category/product  
+    - potentially change in selling price 
+  
+  - Promotions: 
+    - check for promotions 
+    - number of promoted sales 
+    - average discount  
+    - revenue from promoted vs non-promoted sales 
+    - discount by product  
+  
+  - Customers: 
+    - new vs returning customers  
+    - revenue/orders/units per customer  
+    - average order value per customer 
+    - potentially customer demographics  
+  
+  - Locations: 
+    - revenue/orders/customers/units by territory 
+    - revenue/orders/customers by country/state 
+  
+  - Other: 
+    - potentially change in sales reason 
+    - previous Jan to Feb main metrics
+
+As the final project goal is to create a Power BI dashboard, I will use SQL to get the main data for analysis before moving to Power BI (utilising data modelling and DAX) to carry out the remaining analysis. 
+
+
+
+
+
+
+
+
+
