@@ -36,4 +36,4 @@ SELECT
     ROUND(
         100.0 * (units - previous_units) / 
         NULLIF(previous_units, 0), 2) AS units_pct_change
-FROM monthly_with_previous
+FROM monthly_with_previous;
