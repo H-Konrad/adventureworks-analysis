@@ -2,9 +2,10 @@ SELECT
   DATE_TRUNC(DATE(fis.OrderDate), MONTH) AS sales_month,
   COALESCE(dpc.EnglishProductCategoryName, "Unlabelled") AS category,
   COALESCE(dps.EnglishProductSubcategoryName, 'Unlabelled') AS subcategory,
-  FlOOR(SUM(fis.SalesAmount)) AS revenue,
+  ROUND(SUM(fis.SalesAmount), 2) AS revenue,
   COUNT(DISTINCT fis.SalesOrderNumber) AS orders,
-  SUM(fis.OrderQuantity) AS units
+  SUM(fis.OrderQuantity) AS units,
+  ROUND(AVG(fis.UnitPrice), 2) AS unit_price
   
 FROM adventureworks.fact_internet_sales fis
 
