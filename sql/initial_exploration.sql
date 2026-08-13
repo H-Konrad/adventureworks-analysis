@@ -1,25 +1,25 @@
 WITH 
     monthly AS (
         SELECT
-            FORMAT_TIMESTAMP('%Y-%m', OrderDate) AS year_month,
+            DATE_TRUNC(DATE(OrderDate), MONTH) AS sales_month,
             FlOOR(SUM(SalesAmount)) AS revenue,
             COUNT(DISTINCT SalesOrderNumber) AS orders,
             COUNT(DISTINCT CustomerKey) AS customers,
             SUM(OrderQuantity) AS units
         FROM adventureworks.fact_internet_sales
-        GROUP BY year_month
+        GROUP BY sales_month
     ),
     monthly_with_previous AS (
         SELECT
             *,
-            LAG(revenue) OVER (ORDER BY year_month) AS previous_revenue,
-            LAG(orders) OVER (ORDER BY year_month) AS previous_orders,
-            LAG(customers) OVER (ORDER BY year_month) AS previous_customers,
-            LAG(units) OVER (ORDER BY year_month) AS previous_units
+            LAG(revenue) OVER (ORDER BY sales_month) AS previous_revenue,
+            LAG(orders) OVER (ORDER BY sales_month) AS previous_orders,
+            LAG(customers) OVER (ORDER BY sales_month) AS previous_customers,
+            LAG(units) OVER (ORDER BY sales_month) AS previous_units
         FROM monthly
     )
 SELECT
-    year_month,
+    sales_month,
     revenue,
     ROUND(
         100.0 * (revenue - previous_revenue) / 
