@@ -51,12 +51,15 @@ To answer this question, I want to look at the following ideas:
 
 As the final project goal is to create a Power BI dashboard, I will use SQL to get the main data for analysis before moving to Power BI (utilising data modelling and DAX) to carry out the remaining analysis. 
 
-Initial look at the products table:
-- mostly positive across the board with more sales for most items
-- potential for a nice hierarchical chart with category -> subcategory 
-
-
-
+Initial look at the products table:  
+- mostly positive across the board, with more sales across most items  
+- current explanations for the revenue drop:  
+  - a decrease in sale price of a key revenue driver 
+  - far fewer sales of the subcategory with the highest revenue share 
+  - three subcategories make up 96.76% of revenue for Jan, 91.24% in Feb (weakness in the business model) 
+- potential for a hierarchical chart with category -> subcategory
+ 
+New idea to add to the products query. Standalone, revenue is not a good indicator of performance, so I will add revenue share, which is more informative since it describes the percentage of revenue from that product. With the revenue share for both months, the tree graph can show revenue as square size and percentage-point change as colour.  
 
 
 
