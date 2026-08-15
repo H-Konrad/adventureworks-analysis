@@ -61,6 +61,11 @@ Initial look at the products table:
  
 New idea to add to the products query. Standalone, revenue is not a good indicator of performance, so I will add revenue share, which is more informative since it describes the percentage of revenue from that product. With the revenue share for both months, the tree graph can show revenue as square size and percentage-point change as colour.  
 
-
-
-
+Initial look at the promotions table:  
+- no obvious change in promotions or discounts that could explain the revenue decline 
+- far more orders for accessories and clothing in Feb compared to Jan, and fewer bike orders, which is a huge revenue hit  
+  - For example, for the sales with no discount:
+    - 340 clothing units sold account for ~12,000  
+    - 20 bikes sold account for ~67,000  
+ 
+Since the promotions do not provide an explanation for the revenue decline, I will not use the promotion by categories table. The table is too complex and conveys the same information as the products table. Instead, I will create a new query to summarise the promotional metrics across Jan and Feb. 
