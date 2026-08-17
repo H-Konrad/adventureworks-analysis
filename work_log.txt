@@ -20,50 +20,50 @@ Why did revenue decrease between Jan and Feb 2013 despite the massive increase i
 
 To answer this question, I want to look at the following ideas:
   - Main metrics: 
-    - total revenue/orders/customers/units 
-    - revenue per order/unit  
-    - units per order 
+    - Total revenue/orders/customers/units 
+    - Revenue per order/unit  
+    - Units per order 
   
   - Products: 
-    - revenue/orders/units by product category/subcategory 
-    - change in selling price by product category/subcategory 
+    - Revenue/orders/units by product category/subcategory 
+    - Change in selling price by product category/subcategory 
 
   - Promotions: 
-    - check for promotions 
-    - number of promoted sales 
-    - average discount  
-    - revenue from promoted vs non-promoted sales 
-    - discount by product  
+    - Check for promotions 
+    - Number of promoted sales 
+    - Average discount  
+    - Revenue from promoted vs non-promoted sales 
+    - Discount by product  
   
   - Customers: 
-    - new vs returning customers  
-    - revenue/orders/units per customer  
-    - average order value per customer 
-    - potentially customer demographics  
+    - New vs returning customers  
+    - Revenue/orders/units per customer  
+    - Average order value per customer 
+    - Potentially customer demographics  
   
   - Locations: 
-    - revenue/orders/customers/units by territory 
-    - revenue/orders/customers by country/state 
+    - Revenue/orders/customers/units by territory 
+    - Revenue/orders/customers by country/state 
   
   - Other: 
-    - potentially change in sales reason 
-    - previous Jan to Feb main metrics
+    - Potentially change in sales reason 
+    - Previous Jan to Feb main metrics
 
 As the final project goal is to create a Power BI dashboard, I will use SQL to get the main data for analysis before moving to Power BI (utilising data modelling and DAX) to carry out the remaining analysis. 
 
-Initial look at the products table:  
-- mostly positive across the board, with more sales across most items  
-- current explanations for the revenue drop:  
-  - a decrease in sale price of a key revenue driver 
-  - far fewer sales of the subcategory with the highest revenue share 
-  - three subcategories make up 96.76% of revenue for Jan, 91.24% in Feb (weakness in the business model) 
-- potential for a hierarchical chart with category -> subcategory
+Initial look at the products query:  
+- Mostly positive across the board, with more sales across most items  
+- Current explanations for the revenue drop:  
+  - A decrease in sale price of a key revenue driver 
+  - Far fewer sales of the subcategory with the highest revenue share 
+  - Three subcategories make up 96.76% of revenue for Jan, 91.24% in Feb (weakness in the business model) 
+- Potential for a hierarchical chart with category -> subcategory
  
 New idea to add to the products query. Standalone, revenue is not a good indicator of performance, so I will add revenue share, which is more informative since it describes the percentage of revenue from that product. With the revenue share for both months, the tree graph can show revenue as square size and percentage-point change as colour.  
 
-Initial look at the promotions table:  
-- no obvious change in promotions or discounts that could explain the revenue decline 
-- far more orders for accessories and clothing in Feb compared to Jan, and fewer bike orders, which is a huge revenue hit  
+Initial look at the promotions query:  
+- No obvious change in promotions or discounts that could explain the revenue decline.
+- Far more orders for accessories and clothing in Feb compared to Jan, and fewer bike orders, which is a huge revenue hit.  
   - For example, for the sales with no discount:
     - 340 clothing units sold account for ~12,000  
     - 20 bikes sold account for ~67,000  
@@ -71,27 +71,45 @@ Initial look at the promotions table:
 Since the promotions do not provide an explanation for the revenue decline, I will not use the promotion by categories table. The table is too complex and conveys the same information as the products table. Instead, I will create a new query to summarise the promotional metrics across Jan and Feb.
 
 New ideas for customer analysis: 
-  - customer behaviour over time  
-    - new/returning customers per month 
-    - monthly customer retention 
-  - customer metrics 
-    - revenue/orders/units per new/existing customer 
-    - average order value per new/existing customer 
-  - customer purchasing 
-    - product categories bought
+  - Customer behaviour over time  
+    - New/returning customers per month 
+    - Monthly customer retention 
+  - Customer metrics 
+    - Revenue/orders/units per new/existing customer 
+    - Average order value per new/existing customer 
+  - Customer purchasing 
+    - Product categories bought
 
-Initial look at every customer table: 
-  - month-to-month retention 
-    - very low retention at 5.1% at its peak 
-    - this makes sense since cycling equipment is mainly a one-off purchase; customers buy a bike and standard equipment and then only return when they need a replacement, repair, or additional equipment 
-  - new vs returning customers  
-    - only new customers from 2010-12-01 to 2012-11-01 
-    - when comparing Jan vs Feb 2013, Feb has over 3x customers with 3x orders/units, but the revenue per customer is 3x less  
-    - total new customer revenue is less for Feb than Jan 
-    - for returning customers, revenue is less in Feb, with a lower revenue per customer but higher units per customer, meaning customers are buying less expensive products  
-  - customer by products  
-    - new customers in Feb are buying far more accessories and clothing (cheaper items) than in Jan  
-    - new and returning customers are not buying mountain bikes (most expensive subcategory)  
-    - road and touring bikes are more stable, with an increase in units sold for new customers, while returning customers buy less 
-  - overall, excluding the retention table, the month-to-month revenue difference can be explained using the tables 
-  - new idea to combine the customers by products table with the original products table; in Power BI, a hierarchy chart can be used with category into subcategory, revenue as the size, colour as the change in revenue, and the customer type as a filter
+Initial look at the customer queries: 
+  - Month-to-month retention 
+    - Very low retention at 5.1% at its peak.
+    - This makes sense since cycling equipment is mainly a one-off purchase. Customers buy a bike and standard equipment and then only return when they need a replacement, repair, or additional equipment.
+  - New vs returning customers  
+    - Only new customers from 2010-12-01 to 2012-11-01.
+    - When comparing Jan vs Feb 2013, Feb has over 3x customers with 3x orders/units, but the revenue per customer is 3x less.
+    - Total new customer revenue is less for Feb than Jan.
+    - For returning customers, revenue is less in Feb, with a lower revenue per customer but higher units per customer, meaning customers are buying less expensive products.  
+  - Customer by products  
+    - New customers in Feb are buying far more accessories and clothing (cheaper items) than in Jan.  
+    - New and returning customers are not buying mountain bikes (most expensive subcategory).  
+    - Road and touring bikes are more stable, with an increase in units sold for new customers, while returning customers buy less. 
+  - Overall, excluding the retention query, the month-to-month revenue difference can be explained using the queries. 
+  - New idea to combine the customers by products table with the original products table: in Power BI, a hierarchy chart can be used with category into subcategory, revenue as the size, colour as the change in revenue, and the customer type as a filter.
+ - Customer demographics could reveal more information; however, there is no indication of when that information was collected, meaning that any conclusions drawn from it could be outdated. 
+ 
+Initial look at the geographic queries: 
+  - Territory analysis 
+    - We see a pattern where orders/customers/units increase from month to month but revenue decreases. 
+  - Geography analysis 
+    - Very similar to territory, orders/customers/units increase, but in some states we see a revenue increase. 
+    - Although there is a revenue increase, it's very little compared to the massive jump in orders/customers/units.  
+ 
+Initially, I would have suspected that geography plays a vital role in the revenue decline, as there are differences in buying habits across regions and challenggs assocaited when entering a new market. However, this is not the case. This means that there is something else at play that may or may not be in the data. Looking back at the initial exploration query, the results show that there was a large spike in customers/orders/units from Dec to Jan. That was not seen before, as the revenue increase was nearly proportional to that of the orders.  
+   
+New ideas: 
+  - Possible that the reason for this increase and the large increase in sales for accessories and clothing is because there were new products introduced.  
+  - Since the problem seems to begin in Dec to Jan, I will expand the search to Dec to Feb instead.  
+ 
+Initial look at the product introduction query: 
+  - Products seem to be introduced at intervals every year from 2011 to 2013 in July. 
+  - As July is far before the research dates, new products are not the reason for the order increase.
