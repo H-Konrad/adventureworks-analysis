@@ -15,7 +15,7 @@ WITH
     FROM adventureworks.fact_internet_sales
     GROUP BY sales_month, CustomerKey
   ),
-  new_vs_old AS (
+  new_vs_returning AS (
     SELECT
       cm.sales_month,
       cm.CustomerKey,
@@ -40,6 +40,6 @@ SELECT
   ROUND(SUM(revenue)/COUNT(customer_type), 2) AS revenue_per_customer,
   ROUND(SUM(orders)/COUNT(customer_type), 2) AS orders_per_customer,
   ROUND(SUM(units)/COUNT(customer_type), 2) AS units_per_customer
-FROM new_vs_old
+FROM new_vs_returning
 GROUP BY sales_month, customer_type
 ORDER BY sales_month, customer_type
