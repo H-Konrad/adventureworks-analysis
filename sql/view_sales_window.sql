@@ -1,4 +1,4 @@
-CREATE OR REPLACE VIEW adventureworks.vw_internet_sales_jan_feb_2013 AS
+CREATE OR REPLACE VIEW adventureworks.vw_internet_sales_window AS
 
 SELECT *
 FROM adventureworks.fact_internet_sales
