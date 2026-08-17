@@ -68,4 +68,30 @@ Initial look at the promotions table:
     - 340 clothing units sold account for ~12,000  
     - 20 bikes sold account for ~67,000  
  
-Since the promotions do not provide an explanation for the revenue decline, I will not use the promotion by categories table. The table is too complex and conveys the same information as the products table. Instead, I will create a new query to summarise the promotional metrics across Jan and Feb. 
+Since the promotions do not provide an explanation for the revenue decline, I will not use the promotion by categories table. The table is too complex and conveys the same information as the products table. Instead, I will create a new query to summarise the promotional metrics across Jan and Feb.
+
+New ideas for customer analysis: 
+  - customer behaviour over time  
+    - new/returning customers per month 
+    - monthly customer retention 
+  - customer metrics 
+    - revenue/orders/units per new/existing customer 
+    - average order value per new/existing customer 
+  - customer purchasing 
+    - product categories bought
+
+Initial look at every customer table: 
+  - month-to-month retention 
+    - very low retention at 5.1% at its peak 
+    - this makes sense since cycling equipment is mainly a one-off purchase; customers buy a bike and standard equipment and then only return when they need a replacement, repair, or additional equipment 
+  - new vs returning customers  
+    - only new customers from 2010-12-01 to 2012-11-01 
+    - when comparing Jan vs Feb 2013, Feb has over 3x customers with 3x orders/units, but the revenue per customer is 3x less  
+    - total new customer revenue is less for Feb than Jan 
+    - for returning customers, revenue is less in Feb, with a lower revenue per customer but higher units per customer, meaning customers are buying less expensive products  
+  - customer by products  
+    - new customers in Feb are buying far more accessories and clothing (cheaper items) than in Jan  
+    - new and returning customers are not buying mountain bikes (most expensive subcategory)  
+    - road and touring bikes are more stable, with an increase in units sold for new customers, while returning customers buy less 
+  - overall, excluding the retention table, the month-to-month revenue difference can be explained using the tables 
+  - new idea to combine the customers by products table with the original products table; in Power BI, a hierarchy chart can be used with category into subcategory, revenue as the size, colour as the change in revenue, and the customer type as a filter
