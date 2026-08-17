@@ -113,3 +113,5 @@ New ideas:
 Initial look at the product introduction query: 
   - Products seem to be introduced at intervals every year from 2011 to 2013 in July. 
   - As July is far before the research dates, new products are not the reason for the order increase.
+
+Changing the view to Dec to Feb, there is a spike in customers/orders/units, but the overall pattern remains consistent with what was observed previously, with no new insights. I will conclude the analysis based on the information gathered so far. This includes writing a few final queries for use in Power BI.
