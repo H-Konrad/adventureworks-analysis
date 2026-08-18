@@ -11,7 +11,7 @@ WITH
   promotional_sales AS(
     SELECT
       *
-    FROM adventureworks.vw_internet_sales_jan_feb_2013
+    FROM adventureworks.vw_internet_sales_window
     WHERE PromotionKey IN (
         SELECT
           *

@@ -11,16 +11,16 @@ WITH
   ),
   products AS (
     SELECT
-      DATE_TRUNC(DATE(isjf.OrderDate), MONTH) AS sales_month,
-      isjf.PromotionKey,
-      isjf.SalesAmount,
-      isjf.SalesOrderNumber,
-      isjf.OrderQuantity,
+      DATE_TRUNC(DATE(isw.OrderDate), MONTH) AS sales_month,
+      isw.PromotionKey,
+      isw.SalesAmount,
+      isw.SalesOrderNumber,
+      isw.OrderQuantity,
       dpc.EnglishProductCategoryName AS category
-    FROM adventureworks.vw_internet_sales_jan_feb_2013 isjf   
+    FROM adventureworks.vw_internet_sales_window isw
     
     LEFT JOIN adventureworks.dim_product dp 
-      ON isjf.ProductKey = dp.ProductKey
+      ON isw.ProductKey = dp.ProductKey
     LEFT JOIN adventureworks.dim_product_subcategory dps 
       ON dp.ProductSubcategoryKey = dps.ProductSubcategoryKey
     LEFT JOIN adventureworks.dim_product_category dpc 

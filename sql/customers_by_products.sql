@@ -10,7 +10,7 @@ WITH
       DATE_TRUNC(DATE(OrderDate), MONTH) AS sales_month,
       CustomerKey,
       ProductKey
-    FROM adventureworks.vw_internet_sales_jan_feb_2013
+    FROM adventureworks.vw_internet_sales_window
   ),
   new_vs_old AS (
     SELECT
