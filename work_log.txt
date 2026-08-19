@@ -115,3 +115,17 @@ Initial look at the product introduction query:
   - As July is far before the research dates, new products are not the reason for the order increase.
 
 Changing the view to Dec to Feb, there is a spike in customers/orders/units, but the overall pattern remains consistent with what was observed previously, with no new insights. I will conclude the analysis based on the information gathered so far. This includes writing a few final queries for use in Power BI.
+
+For the Power BI dashboard, I want to go with two or three pages. The first page will provide an introduction to the analysis. The second page will present the main analysis, using the findings from the queries. Ideally, a well-designed dashboard should be self-explanatory, meaning a third page dedicated to explaining the findings should not be needed. However, for the purpose of presenting this analysis as portfolio work, I will consider a third page to summarise the key findings and communicate the conclusions.  
+ 
+Page 1:  
+  - initial exploration query  
+  - line chart showing revenue over time  
+  - KPIs with month-to-month % change 
+ 
+Page 2: 
+  - the product tree map idea  
+  - new vs returning customers bar chart  
+  - promotion impact table  
+  - customer-focused KPIs  
+  - largest revenue movers 
