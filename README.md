@@ -26,12 +26,12 @@ So, why did revenue decrease despite the massive increase in orders, customers, 
 
 ## Key findings 
 
-The analysis indicate that the decline in revenue was primarily driven by: 
+The analysis indicates that the decline in revenue was primarily driven by: 
 - A decrease in the units sold for key revenue drivers, Mountain Bikes and Road Bikes.
 - A large increase in the new customer base but a 71% decrease in revenue per new customer.
 - A large increase in sales of lower-value product categories, particularly Accessories and Clothing.
  
-Overall, the decline is driven by what customers purchased. Other factors such as promotional activity or geographic distribution did not provide a meaningful explanation for the change. 
+Overall, the revenue decline appears to be driven by a shift in purchasing behaviour towards lower-value products, combined with lower sales of key high-value products. Other factors such as promotional activity or geographic distribution did not provide a meaningful explanation for the change. 
 
 ## Approach
 
@@ -40,10 +40,10 @@ Historical monthly sales data was first examined to identify any notable anomali
 - Customers: customer retention, differences in new and returning customers, and purchasing habits. 
 - Promotions: changes in promotions and discount rates. 
 - Geography: changes across territories and locations. 
- 
-The analysis is performed in BigQuery using SQL, with Power BI used to present the key findings.
 
-## Data & Architecture
+## Technical Implementation
+
+### Data Pipeline
 
 The analysis uses Microsoft's AdventureWorks sample database. The database was loaded into SQL Server Management Studio, where the required tables were extracted as CSV files and uploaded to Google Cloud Storage. The data was then loaded into BigQuery, queried, and final views were created for Power BI.
 
@@ -51,9 +51,36 @@ The analysis uses Microsoft's AdventureWorks sample database. The database was l
 AdventureWorks -> SSMS 22 -> Google Cloud Storage -> BigQuery -> Power BI
 ```
 
+### SQL 
+
+BigQuery is used as the analytical layer, with GoogleSQL used to transform and analyse the AdventureWorks data. Final analytical views provide the data sources for the Power BI report.
+
+### Power BI
+
+Power BI is used to present the analysis through an interactive dashboard, bringing together the query outputs to address the revenue discrepancy.
+
+## Limitations
+
+- The analysis focuses on the Internet Sales channel and does not include Reseller Sales.
+- Customer demographic attributes were not used in the analysis because their historical validity could not be established.
+
 ## Tools
 
 - Google BigQuery 
 - Google Cloud Storage
 - SQL Server Management Studio 22
 - Power BI
+
+## Repository Structure
+
+```text
+├── data/
+├── sql/
+│   ├── cleaning/
+│   ├── discovery/
+│   └── final/
+├── dashboard_images/
+├── dashboard.pbix
+├── work_log.md
+└── README.md
+```
